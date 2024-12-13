@@ -1,47 +1,43 @@
 ﻿// Calculator by Jibé
 
+using System.Globalization;
+
 public class Calculator
 {
+    
     public static void Main()
     {
-        bool running = true;
+        Run();
+    }
+
+    private static void Run()
+    {
         string option = startApplication();
         
-        while (running)
+        switch (option)
         {
-            switch (option)
-            {
-                case "begin":
-                    option = startApplication();
-                    break;
-                case "exit":
-                    running = false;
-                    break;
-                case "help":
-                    Console.WriteLine("Calculator made by Jibé");
-                    Console.WriteLine("Made to learn more about C#");
-                    Console.WriteLine("You can find the whole code on github :");
-                    Console.WriteLine("https://github.com/BaptisteFran/csharp_calculator");
-                    break;
-                case "start":
-                    Console.WriteLine("Starting calculator");
-                    getInput();
-                    break;
-                case "multiple":
-                    Console.WriteLine("Starting multiple calculators");
-                    Console.WriteLine("Choose how many numbers you want to add in your calculation :");
-                    string numberToCalculate = Console.ReadLine();
-                    try
-                    {
-                        getMultipleInputs(Int32.Parse(numberToCalculate));
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Please enter a valid integer");
-                        option = "begin";
-                    }
-                    break;
-            }
+            case "exit":
+                Environment.Exit(0);
+                break;
+            case "about":
+                Console.WriteLine("Calculator made by Jibé");
+                Console.WriteLine("Made to learn more about C#");
+                Console.WriteLine("You can find the whole code on github :");
+                Console.WriteLine("https://github.com/BaptisteFran/calculator");
+                Run();
+                break;
+            case "start":
+                Console.WriteLine("Starting calculator");
+                getInput();
+                Run();
+                break;
+            case "multiple":
+                Console.WriteLine("Starting multiple calculators");
+                Console.WriteLine("Choose how many numbers you want to add in your calculation :");
+                string numberToCalculate = Console.ReadLine();
+                checkIfNumberIsCorrect(numberToCalculate);
+                Run();
+                break;
         }
     }
 
@@ -54,18 +50,42 @@ public class Calculator
         Console.WriteLine("Type 'multiple' to use multiple operations.");
         return Console.ReadLine();
     }
+    
+    private static void checkIfNumberIsCorrect(string number)
+    {
+        try
+        {
+            Int32.Parse(number);
+        }
+        catch
+        {
+            Console.WriteLine("Please enter a valid integer");
+            Run();
+        }
+    }
 
     private static void getInput()
     {
         Console.WriteLine("Type your first number: ");
         string number1 = Console.ReadLine();
+        checkIfNumberIsCorrect(number1);
         Console.WriteLine("Choose an operator:");
         Console.WriteLine("1 - Addition");
         Console.WriteLine("2 - Subtraction");
         Console.WriteLine("3 - Multiplication");
         Console.WriteLine("4 - Division");
         string operator1 = Console.ReadLine();
+        string[] operatorArray = ["1", "2", "3", "4"];
+
+        if (!operatorArray.Contains(operator1))
+        {
+            Console.WriteLine("Please enter a valid operator");
+            operator1 = Console.ReadLine();
+        }
+        
+        Console.WriteLine("Type your second number: ");
         string number2 = Console.ReadLine();
+        checkIfNumberIsCorrect(number2);
         string[] calc = [number1, number2, operator1]; 
 
         calculate(calc);
@@ -95,5 +115,9 @@ public class Calculator
                 Console.WriteLine($"The result is {Int32.Parse(calc[0]) / Int32.Parse(calc[1])}");
                 break;
         }
+        
+        Console.WriteLine("Thank you for using the calculator!");
+        Console.WriteLine("Press any key to restart...");
+        Console.ReadLine();
     }
 }

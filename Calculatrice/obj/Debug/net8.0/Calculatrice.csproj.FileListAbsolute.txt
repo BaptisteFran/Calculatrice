@@ -1,0 +1,15 @@
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/bin/Debug/net8.0/Calculatrice
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/bin/Debug/net8.0/Calculatrice.deps.json
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/bin/Debug/net8.0/Calculatrice.runtimeconfig.json
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/bin/Debug/net8.0/Calculatrice.dll
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/bin/Debug/net8.0/Calculatrice.pdb
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/obj/Debug/net8.0/Calculatrice.GeneratedMSBuildEditorConfig.editorconfig
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/obj/Debug/net8.0/Calculatrice.AssemblyInfoInputs.cache
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/obj/Debug/net8.0/Calculatrice.AssemblyInfo.cs
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/obj/Debug/net8.0/Calculatrice.csproj.CoreCompileInputs.cache
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/obj/Debug/net8.0/Calculatrice.sourcelink.json
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/obj/Debug/net8.0/Calculatrice.dll
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/obj/Debug/net8.0/refint/Calculatrice.dll
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/obj/Debug/net8.0/Calculatrice.pdb
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/obj/Debug/net8.0/Calculatrice.genruntimeconfig.cache
+/home/baptiste/RiderProjects/Calculatrice/Calculatrice/obj/Debug/net8.0/ref/Calculatrice.dll
