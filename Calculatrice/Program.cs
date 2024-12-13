@@ -1,5 +1,6 @@
 ﻿// Calculator by Jibé
 
+using System.Data;
 using System.Globalization;
 
 public class Calculator
@@ -36,6 +37,7 @@ public class Calculator
                 Console.WriteLine("Choose how many numbers you want to add in your calculation :");
                 string numberToCalculate = Console.ReadLine();
                 checkIfNumberIsCorrect(numberToCalculate);
+                getMultipleInputs(numberToCalculate);
                 Run();
                 break;
         }
@@ -63,12 +65,36 @@ public class Calculator
             Run();
         }
     }
+    
+    private static string checkOperator(string operator1)
+    {
+        string op = "";
+        switch (operator1)
+        {
+            case "1":
+                op = "+";
+                break;
+            case "2":
+                op = "-";
+                break;
+            case "3":
+                op = "*";
+                break;
+            case "4":
+                op = "/";
+                break;
+        }
+
+        return op;
+    }
 
     private static void getInput()
     {
+        string calc = "";
         Console.WriteLine("Type your first number: ");
         string number1 = Console.ReadLine();
         checkIfNumberIsCorrect(number1);
+        calc += number1;
         Console.WriteLine("Choose an operator:");
         Console.WriteLine("1 - Addition");
         Console.WriteLine("2 - Subtraction");
@@ -83,41 +109,65 @@ public class Calculator
             operator1 = Console.ReadLine();
         }
         
+        calc += " " + checkOperator(operator1) + " ";
+        
         Console.WriteLine("Type your second number: ");
         string number2 = Console.ReadLine();
         checkIfNumberIsCorrect(number2);
-        string[] calc = [number1, number2, operator1]; 
+        calc += number2;
+
 
         calculate(calc);
     }
 
-    private static void getMultipleInputs(int numberToCalculate)
+    private static void getMultipleInputs(string numberToCalculate)
     {
-        
-    }
-
-    private static void calculate(string[] calc)
-    {
-        Console.WriteLine("Your operation is: ");
-        Console.WriteLine(calc[0] + calc[2] + calc[1]);
-        switch (calc[2])
+        string number = "";
+        for (int i = 0; i < Int32.Parse(numberToCalculate); i++)
         {
-            case "1":
-                Console.WriteLine($"The result is {Int32.Parse(calc[0]) + Int32.Parse(calc[1])}");
-                break;
-            case "2":
-                Console.WriteLine($"The result is {Int32.Parse(calc[0]) - Int32.Parse(calc[1])}");
-                break;
-            case "3":
-                Console.WriteLine($"The result is {Int32.Parse(calc[0]) * Int32.Parse(calc[1])}");
-                break;
-            case "4":
-                Console.WriteLine($"The result is {Int32.Parse(calc[0]) / Int32.Parse(calc[1])}");
-                break;
+            if (i % 2 == 0)
+            {
+                Console.WriteLine($"Type your number n°{i + 1}:");
+                string nb = Console.ReadLine();
+                checkIfNumberIsCorrect(nb);
+                number += nb;
+            }
+            else
+            {
+                Console.WriteLine("Choose an operator:");
+                Console.WriteLine("1 - Addition");
+                Console.WriteLine("2 - Subtraction");
+                Console.WriteLine("3 - Multiplication");
+                Console.WriteLine("4 - Division");
+                string operator1 = Console.ReadLine();
+                string[] operatorArray = ["1", "2", "3", "4"];
+
+                if (!operatorArray.Contains(operator1))
+                {
+                    Console.WriteLine("Please enter a valid operator");
+                    operator1 = Console.ReadLine();
+                }
+                number += " " + checkOperator(operator1) + " ";
+            }
         }
         
+        calculate(number);
+    }
+
+
+
+    private static void calculate(string calc)
+    {
+        Console.WriteLine("Your operation is: ");
+        Console.WriteLine(calc);
+
+        DataTable dt = new DataTable();
+        Console.WriteLine($"The result is: {dt.Compute(calc, "")}");
+        
+        
         Console.WriteLine("Thank you for using the calculator!");
-        Console.WriteLine("Press any key to restart...");
+        Console.WriteLine("Press enter to restart...");
         Console.ReadLine();
+        Run();
     }
 }
