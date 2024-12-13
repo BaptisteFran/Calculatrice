@@ -125,15 +125,13 @@ public class Calculator
         string number = "";
         for (int i = 0; i < Int32.Parse(numberToCalculate); i++)
         {
-            if (i % 2 == 0)
-            {
                 Console.WriteLine($"Type your number n°{i + 1}:");
                 string nb = Console.ReadLine();
                 checkIfNumberIsCorrect(nb);
                 number += nb;
-            }
-            else
-            {
+
+                if (i == Int32.Parse(numberToCalculate) - 1) break;
+                
                 Console.WriteLine("Choose an operator:");
                 Console.WriteLine("1 - Addition");
                 Console.WriteLine("2 - Subtraction");
@@ -148,7 +146,6 @@ public class Calculator
                     operator1 = Console.ReadLine();
                 }
                 number += " " + checkOperator(operator1) + " ";
-            }
         }
         
         calculate(number);
