@@ -1,7 +1,5 @@
 ﻿// Calculator by Jibé
-
 using System.Data;
-using System.Globalization;
 
 public class Calculator
 {
@@ -24,7 +22,7 @@ public class Calculator
                 Console.WriteLine("Calculator made by Jibé");
                 Console.WriteLine("Made to learn more about C#");
                 Console.WriteLine("You can find the whole code on github :");
-                Console.WriteLine("https://github.com/BaptisteFran/calculator");
+                Console.WriteLine("https://github.com/BaptisteFran/Calculatrice");
                 Run();
                 break;
             case "start":
@@ -50,7 +48,16 @@ public class Calculator
         Console.WriteLine("Type 'about' to get infos about this little program.");
         Console.WriteLine("Type 'start' to start an operation.");
         Console.WriteLine("Type 'multiple' to use multiple operations.");
-        return Console.ReadLine();
+        string option = Console.ReadLine();
+        string[] options = ["exit", "about", "start", "multiple"];
+
+        if (!options.Contains(option))
+        {
+            Console.WriteLine("You must choose a valid option.");
+            option = Console.ReadLine();
+        }
+
+        return option;
     }
     
     private static void checkIfNumberIsCorrect(string number)
